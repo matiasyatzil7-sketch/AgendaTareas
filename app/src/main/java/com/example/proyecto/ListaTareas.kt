@@ -2,16 +2,20 @@ package com.example.proyecto
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.example.proyecto.databinding.ActivityListaTareasBinding
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.proyecto.databinding.ActivityListaTareasBinding
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
 class ListaTareas : AppCompatActivity() {
 
     private lateinit var binding: ActivityListaTareasBinding
+    private lateinit var adapter: TaskAdapter
+    private val tasks = mutableListOf<Tareas>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,19 +36,56 @@ class ListaTareas : AppCompatActivity() {
             insets
         }
 
+        adapter = TaskAdapter(
+            tasks,
+            onToggle = { TaskRepository.save(this, tasks) },
+            onEdit = { task -> openForm(task.id) },
+            onDelete = { task -> confirmDelete(task) }
+        )
+        binding.rvTasks.layoutManager = LinearLayoutManager(this)
+        binding.rvTasks.adapter = adapter
+
+        binding.btnAdd.setOnClickListener { openForm(-1) }
+
         binding.btnLogout.setOnClickListener {
             SessionManager.isAuthenticated = false
             goToLogin()
         }
-        // Datos de ejemplo (después los reemplazaremos por datos guardados)
-        val tasks = mutableListOf(
-            Tareas(1, "Estudiar Kotlin", "Repasar ViewBinding y Activities"),
-            Tareas(2, "Hacer el proyecto", "Terminar la lista de tareas"),
-            Tareas(3, "Grabar el video", "Demostración de 2 a 4 minutos")
-        )
+    }
 
-        binding.rvTasks.layoutManager = LinearLayoutManager(this)
-        binding.rvTasks.adapter = TaskAdapter(tasks)
+    // Se ejecuta al volver del formulario: recarga las tareas guardadas
+    override fun onResume() {
+        super.onResume()
+        if (!::adapter.isInitialized) return
+        tasks.clear()
+        tasks.addAll(TaskRepository.load(this))
+        adapter.notifyDataSetChanged()
+        updateEmptyMessage()
+    }
+
+    private fun openForm(taskId: Int) {
+        val intent = Intent(this, FormularioTarea::class.java)
+        intent.putExtra(FormularioTarea.EXTRA_TASK_ID, taskId)
+        startActivity(intent)
+    }
+
+    // Diálogo de confirmación antes de borrar
+    private fun confirmDelete(task: Tareas) {
+        MaterialAlertDialogBuilder(this)
+            .setTitle(R.string.delete_title)
+            .setMessage(getString(R.string.delete_message, task.title))
+            .setPositiveButton(R.string.delete_confirm) { _, _ ->
+                tasks.remove(task)
+                TaskRepository.save(this, tasks)
+                adapter.notifyDataSetChanged()
+                updateEmptyMessage()
+            }
+            .setNegativeButton(R.string.prompt_cancel, null)
+            .show()
+    }
+
+    private fun updateEmptyMessage() {
+        binding.tvEmpty.visibility = if (tasks.isEmpty()) View.VISIBLE else View.GONE
     }
 
     // Va al login y borra el historial para que "atrás" no regrese aquí

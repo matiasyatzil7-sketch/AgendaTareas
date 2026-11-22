@@ -23,4 +23,19 @@
 
     <string name="task_item_done">Terminada</string>
 
+    <string name="task_empty">No tienes tareas. Pulsa Nueva tarea para agregar una.</string>
+    <string name="add_task_button">Nueva tarea</string>
+    <string name="task_delete">Eliminar tarea</string>
+    <string name="form_title_new">Nueva tarea</string>
+    <string name="form_title_edit">Editar tarea</string>
+    <string name="form_hint_title">Título</string>
+    <string name="form_hint_description">Descripción</string>
+    <string name="form_save">Guardar</string>
+    <string name="error_title_empty">El título es obligatorio</string>
+    <string name="error_title_short">El título debe tener al menos 3 caracteres</string>
+    <string name="delete_title">Eliminar tarea</string>
+    <string name="delete_message">¿Seguro que quieres eliminar %1$s?</string>
+    <string name="delete_confirm">Eliminar</string>
+
+
 </resources>
