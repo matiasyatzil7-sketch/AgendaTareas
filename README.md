@@ -30,10 +30,10 @@ Aplicación para organizar tareas personales. Al abrirla, el usuario debe autent
 4. Conecta un celular con huella registrada y pulsa Run
 
 ## Capturas
+![Autenticación](CAPTURAS/autenticacion.png)
 ![Login](CAPTURAS/login.png)
 ![Lista de tareas](CAPTURAS/tareas.png)
 ![Formulario](CAPTURAS/formulario.png)
-![Modo oscuro](CAPTURAS/autenticacion.png)
 
 ## Autor
 DAFNE MATIAS
