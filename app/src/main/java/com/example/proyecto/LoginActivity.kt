@@ -1,5 +1,6 @@
 package com.example.proyecto
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.annotation.StringRes
@@ -50,9 +51,9 @@ class LoginActivity : AppCompatActivity() {
                 // Huella correcta
                 override fun onAuthenticationSucceeded(result: BiometricPrompt.AuthenticationResult) {
                     super.onAuthenticationSucceeded(result)
-                    showMessage(R.string.login_success)
-                    // Aquí iremos a la pantalla principal (siguiente paso)
-                }
+                    SessionManager.isAuthenticated = true
+                    startActivity(Intent(this@LoginActivity, ListaTareas::class.java))
+                    finish() }
 
                 // Error general: cancelación, bloqueo, etc.
                 override fun onAuthenticationError(errorCode: Int, errString: CharSequence) {

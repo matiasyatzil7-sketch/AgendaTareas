@@ -18,4 +18,7 @@
     <string name="login_error_lockout_permanent">Sensor bloqueado por demasiados intentos. Desbloquea tu celular con PIN o patrón para volver a usarlo.</string>
     <string name="login_error_generic">Ocurrió un error de autenticación. Intenta de nuevo.</string>
 
+    <string name="task_list_title">Mis tareas</string>
+    <string name="logout_button">Cerrar sesión</string>
+
 </resources>
