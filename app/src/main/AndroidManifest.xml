@@ -5,6 +5,7 @@
     <uses-permission android:name="android.permission.USE_BIOMETRIC" />
 
     <application
+        android:name=".ProyectoApp"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -29,6 +30,10 @@
             android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".FormularioTarea"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".Ajustes"
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
     </application>

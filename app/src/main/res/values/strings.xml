@@ -37,5 +37,9 @@
     <string name="delete_message">¿Seguro que quieres eliminar %1$s?</string>
     <string name="delete_confirm">Eliminar</string>
 
+    <string name="settings_title">Ajustes</string>
+    <string name="settings_button">Ajustes</string>
+    <string name="settings_dark_mode">Modo oscuro</string>
+
 
 </resources>

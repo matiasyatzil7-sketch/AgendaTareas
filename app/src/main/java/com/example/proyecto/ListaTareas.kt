@@ -47,6 +47,10 @@ class ListaTareas : AppCompatActivity() {
 
         binding.btnAdd.setOnClickListener { openForm(-1) }
 
+        binding.btnSettings.setOnClickListener {
+            startActivity(Intent(this, Ajustes::class.java))
+        }
+
         binding.btnLogout.setOnClickListener {
             SessionManager.isAuthenticated = false
             goToLogin()
