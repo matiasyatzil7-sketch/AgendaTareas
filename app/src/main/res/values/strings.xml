@@ -1,3 +1,21 @@
 <resources>
     <string name="app_name">PROYECTO</string>
+    <string name="login_title">Agenda de tareas</string>
+    <string name="login_subtitle">Inicia sesión con tu huella</string>
+    <string name="login_button">Usar huella</string>
+
+    <string name="prompt_title">Verifica tu identidad</string>
+    <string name="prompt_subtitle">Coloca tu dedo en el lector de huella</string>
+    <string name="prompt_cancel">Cancelar</string>
+
+    <string name="login_success">Acceso concedido</string>
+    <string name="login_error_no_hardware">Este dispositivo no tiene sensor de huella.</string>
+    <string name="login_error_unavailable">El sensor de huella no está disponible en este momento. Intenta más tarde.</string>
+    <string name="login_error_none_enrolled">No hay huellas registradas. Agrega una en Ajustes del celular > Seguridad.</string>
+    <string name="login_error_not_recognized">Huella no reconocida. Intenta de nuevo.</string>
+    <string name="login_error_canceled">Autenticación cancelada. Pulsa el botón para intentar de nuevo.</string>
+    <string name="login_error_lockout">Demasiados intentos fallidos. Espera 30 segundos e intenta de nuevo.</string>
+    <string name="login_error_lockout_permanent">Sensor bloqueado por demasiados intentos. Desbloquea tu celular con PIN o patrón para volver a usarlo.</string>
+    <string name="login_error_generic">Ocurrió un error de autenticación. Intenta de nuevo.</string>
+
 </resources>
