@@ -21,4 +21,6 @@
     <string name="task_list_title">Mis tareas</string>
     <string name="logout_button">Cerrar sesión</string>
 
+    <string name="task_item_done">Terminada</string>
+
 </resources>

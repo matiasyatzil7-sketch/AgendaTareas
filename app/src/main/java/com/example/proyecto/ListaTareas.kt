@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.proyecto.databinding.ActivityListaTareasBinding
+import androidx.recyclerview.widget.LinearLayoutManager
 
 class ListaTareas : AppCompatActivity() {
 
@@ -35,6 +36,15 @@ class ListaTareas : AppCompatActivity() {
             SessionManager.isAuthenticated = false
             goToLogin()
         }
+        // Datos de ejemplo (después los reemplazaremos por datos guardados)
+        val tasks = mutableListOf(
+            Tareas(1, "Estudiar Kotlin", "Repasar ViewBinding y Activities"),
+            Tareas(2, "Hacer el proyecto", "Terminar la lista de tareas"),
+            Tareas(3, "Grabar el video", "Demostración de 2 a 4 minutos")
+        )
+
+        binding.rvTasks.layoutManager = LinearLayoutManager(this)
+        binding.rvTasks.adapter = TaskAdapter(tasks)
     }
 
     // Va al login y borra el historial para que "atrás" no regrese aquí
